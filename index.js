@@ -56,7 +56,7 @@ type Props = {
   style?: any,
 };
 
-class HightChart extends React.PureComponent<Props> {
+class HighchartsWebView extends React.PureComponent<Props> {
   static defaultProps = {
     options: {},
     style: null,
@@ -98,4 +98,4 @@ class HightChart extends React.PureComponent<Props> {
   };
 };
 
-export default HightChart;
+export default HighchartsWebView;

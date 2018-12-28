@@ -12,7 +12,7 @@ npm i -S highcharts-react-native
 ## Usage
 ```js
 import React from 'react';
-import Highcharts from 'highcharts-react-native';
+import HighchartsWebView from 'highcharts-react-native';
 
 export default class App extends React.PureComponent {
   render() {
@@ -26,7 +26,7 @@ export default class App extends React.PureComponent {
     };
 
     return (
-      <Highcharts
+      <HighchartsWebView
         style={{ height: 300 }}
         config={configuration} />
     );
