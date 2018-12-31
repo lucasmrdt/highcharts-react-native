@@ -74,7 +74,7 @@ class HightChart extends React.PureComponent<Props> {
     debug: false,
   };
 
-  _jsonStringify = (json: Object) => (typeof json === 'string'
+  _jsonStringify = (json: Object | string) => (typeof json === 'string'
     ? json
     : JSON.stringify(json, (key: string, value: any) => (
       typeof value === 'function' ? value.toString() : value
