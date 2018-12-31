@@ -1,6 +1,6 @@
 {
   "name": "highcharts-react-native",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Implementation of Highcharts in React Native via WebView API.",
   "main": "index.js",
   "scripts": {
