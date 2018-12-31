@@ -40,4 +40,65 @@ export default class App extends React.PureComponent {
 | config | true | [Object](http://www.highcharts.com/docs/getting-started/your-first-chart)|
 | options | false | [Object](https://api.highcharts.com/highcharts/lang)|
 | style | false | Object |
+| debug | false | boolean |
+
+## Know issues
+### Blanck screen :
+- Why ? **Usualy due to Javascript parsing, babel compiler, ...**
+- How to solve this ?
+  - Code directly into [ES5](https://www.w3schools.com/js/js_es5.asp).
+  - Put your code into string.
+  - Add the `'debug'` prop.
+-  Example :
+```js
+// before
+const config = {
+  tooltip:
+    formatter() {
+      return (
+        '<table style="width:100px;">'
+        + '<tr><td style="color:#bc9c69;">'
+        + '$' + Math.round(this.y)
+        + '</td></tr>'
+        + '<tr><td style="text-align:center;color:#bc9c69;">'
+        + Highcharts.dateFormat('%y/%m/%d', this.x)
+        + '</td></tr>'
+        + '</table>'
+      );
+    },
+    positioner(a, b, point) {
+      return {
+        y: 0,
+        x: point.plotX,
+      };
+    },
+  },
+  // ...
+};
+
+// after
+const config = `{
+  tooltip:
+    formatter: function() {
+      return (
+        '<table style="width:100px;">'
+        + '<tr><td style="color:#bc9c69;">'
+        + '$' + Math.round(this.y)
+        + '</td></tr>'
+        + '<tr><td style="text-align:center;color:#bc9c69;">'
+        + Highcharts.dateFormat('%y/%m/%d', this.x)
+        + '</td></tr>'
+        + '</table>'
+      );
+    },
+    positioner: function (a, b, point) {
+      return {
+        y: 0,
+        x: point.plotX,
+      };
+    },
+  },
+  // ...
+}`;
+```
 
