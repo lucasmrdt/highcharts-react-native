@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
 type Props = {
   config: Object | string,
-  options?: Object | string,
+  options: Object | string,
   debug?: boolean,
   style?: any,
 };
