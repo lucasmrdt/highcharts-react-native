@@ -42,7 +42,7 @@ export default class App extends React.PureComponent {
 | style | false | Object |
 | debug | false | boolean |
 
-## Know issues
+## Known issues
 ### Blanck screen :
 - Why ? **Usualy due to Javascript parsing, babel compiler, ...**
 - How to solve this ?
