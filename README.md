@@ -1,6 +1,6 @@
 # highcharts-react-native
 
-**Thank's to [TradingPal](https://camo.githubusercontent.com/12c283baeba17ad50bf7d03bdabb82a520e19ea0/687474703a2f2f692e67697068792e636f6d2f6c33765264577758696e316f6f4c4348532e676966) but imperfect for our project.**
+**Thank's to [TradingPal](https://camo.githubusercontent.com/12c283baeba17ad50bf7d03bdabb82a520e19ea0/687474703a2f2f692e67697068792e636f6d2f6c33765264577758696e316f6f4c4348532e676966) but got blanck screen on our project.**
 
 📊Implementation of Highcharts in React Native via WebView API.
 
@@ -42,29 +42,30 @@ export default class App extends React.PureComponent {
 | style | false | Object |
 | debug | false | boolean |
 
-## Know issues
+## Known issues
 ### Blanck screen :
-- Why ? **Usualy due to Javascript parsing, babel compiler, ...**
+- Why did that happens ?
+> Blank screen appears when injected Javascript is invalid. Usually due to new Javascript features not supported by JSON.stringify, also due to babel compiler.
 - How to solve this ?
   - Code directly into [ES5](https://www.w3schools.com/js/js_es5.asp).
   - Put your code into string.
   - Add the `'debug'` prop.
 -  Example :
+#### Before
 ```js
-// before
-const config = {
-  tooltip:
+const configuration = {
+  tooltip: {
     formatter() {
-      return (
-        '<table style="width:100px;">'
-        + '<tr><td style="color:#bc9c69;">'
-        + '$' + Math.round(this.y)
-        + '</td></tr>'
-        + '<tr><td style="text-align:center;color:#bc9c69;">'
-        + Highcharts.dateFormat('%y/%m/%d', this.x)
-        + '</td></tr>'
-        + '</table>'
-      );
+      return `
+        <table style="width:100px;">
+          <tr><td style="color:#bc9c69;">
+            $${Math.round(this.y)}
+          </td></tr>
+          <tr><td style="text-align:center;color:#bc9c69;">
+          ${Highcharts.dateFormat('%y/%m/%d', this.x)}
+          </td></tr>
+        </table>
+      `;
     },
     positioner(a, b, point) {
       return {
@@ -75,10 +76,13 @@ const config = {
   },
   // ...
 };
-
-// after
-const config = `{
-  tooltip:
+```
+***
+#### After
+```js
+const my_variable = 'something';
+const configuration = `{
+  tooltip: {
     formatter: function() {
       return (
         '<table style="width:100px;">'
@@ -101,4 +105,3 @@ const config = `{
   // ...
 }`;
 ```
-
