@@ -49,7 +49,7 @@ export default class App extends React.PureComponent {
 - How to solve this ?
   - Code directly into [ES5](https://www.w3schools.com/js/js_es5.asp).
   - Put your code into string.
-  - Add the `'debug'` prop.
+  - Add the `'debug'` prop (the debug's prop allow you to know how injected JS looks like, if previous steps resolve blank screen, remove it).
 -  Example :
 #### Before
 ```js
