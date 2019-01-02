@@ -77,7 +77,6 @@ const configuration = {
   // ...
 };
 ```
-***
 #### After
 ```js
 const my_variable = 'something';
